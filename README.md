@@ -72,7 +72,56 @@ its termination.
    however private ip remains constant.
 2. When you stop, hibernate, or terminate an instance, every block of storage in the instance store
    is reset. Therefore, your data cannot be accessed through the instance store of another instance.
-3.
+
+#### Purchase Options
+
+1. On-demand
+2. Reserved instance
+3. Spot instance
+4. Saving plan
+    - EC2 saving plan
+    - Compute saving plan
+    - Sagemaker saving plan
+5. Dedicate instance (single tenancy)
+6. Dedicated host (single tenancy)
+
+### VPC (Virtual private cloud)
+
+A VPC is an isolated portion of the AWS cloud that has resources defined and restricted for use by a
+customer. It is a region specific service, i.e. it
+cannot span across more than one region.
+
+There is a soft limit of 5 VPC per region.
+
+- VPC endpoints are used to connect your resources inside VPC to other aws resources over private
+  connection.
+- VPC Peering is used connect two VPC together (can also reside in different account or different
+  regions). Both the VPC must have difference address range. VPC
+  peering is not transitive.
+
+```
+i.e if we connect vpc a with b and b with c. The resources in vpc a can access resources in vpc b but not in vpc c.
+VPC-A -> VPC-B 
+VPC-B -> VPC-C 
+VPC-A ❌ VPC-C 
+```
+
+In order to avoid creating multiple vpc peering connection you can use transit gateway which create
+a hub and spoke network to connect multiple vpc together.
+
+- Virtual Private Gateway is used to connect your on-premise data center to AWS cloud over public
+  internet.
+- Another approach to connect your on-premise data to AWS is by using **Direct Connect**, here your
+  on-premise data center connect to the AWS over an actual physical connection provided by an Amazon
+  Partner, thus avoid the public internet completely.
+
+#### Miscellaneous
+
+- AWS trusted advisor looks for security flaws in the configuration components and performance
+  issues
+  in system, while also looking for underutilized resources.
+- DynamoDBa global tables provide a multi-active database that is multi-regional and fully managed.
+  Global tables automatically replicate data across your selection of AWS regions.
 
 ##### Best practices
 
