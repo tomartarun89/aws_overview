@@ -13,6 +13,15 @@ Types of cloud.
 2. Private cloud (on-premise)
 3. Hybrid cloud (public + on-premise)
 
+Six advantages of using cloud computing
+
+1. Trade capital expense for variable expense
+2. Benefit from massive economies of scale
+3. Stop guessing capacity
+4. Increase speed and agility
+5. Stop spending money running and maintaining data centers
+6. Go global in minute
+ 
 ---
 
 ### Compute services
