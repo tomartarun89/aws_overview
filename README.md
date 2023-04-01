@@ -21,7 +21,7 @@ Six advantages of using cloud computing
 4. Increase speed and agility
 5. Stop spending money running and maintaining data centers
 6. Go global in minute
- 
+
 ---
 
 ### Compute services
@@ -81,18 +81,78 @@ its termination.
    however private ip remains constant.
 2. When you stop, hibernate, or terminate an instance, every block of storage in the instance store
    is reset. Therefore, your data cannot be accessed through the instance store of another instance.
+3. You are charged per second and the minimum is 60 secs, i.e. even if you run and EC2 instance for
+   30 seconds you will be charged for 60 seconds.
 
 #### Purchase Options
 
 1. On-demand
 2. Reserved instance
 3. Spot instance
-4. Saving plan
-    - EC2 saving plan
-    - Compute saving plan
-    - Sagemaker saving plan
+4. Saving plan ( monetary commitment )
+    - EC2 Instance Savings Plans
+    - Compute Savings Plans
+    - SageMaker Savings Plans
 5. Dedicate instance (single tenancy)
 6. Dedicated host (single tenancy)
+
+---
+
+### AWS Lambda
+
+AWS Lambda is a serverless, event-driven compute service that lets you run code for virtually any
+type of application or backend service without provisioning or managing servers. You can trigger
+Lambda from over 200 AWS services and software as a service (SaaS) applications, and only pay for
+what you use.
+
+![File processing example using lambda](/images/aws_lambda_example.png)
+
+#### Lambda Pricing
+
+You are charged based on the number of requests for your functions and the duration
+it takes for your code to execute.
+
+Lambda counts a request each time it starts executing in response to an event notification trigger,
+such as from Amazon Simple Notification Service (SNS) or Amazon EventBridge, or an invoke call, such
+as from Amazon API Gateway, or via the AWS SDK, including test invokes from the AWS Console.
+
+Duration is calculated from the time your code begins executing until it returns or otherwise
+terminates, rounded up to the nearest 1 ms*. The price depends on the amount of memory you allocate
+to your function. In the AWS Lambda resource model, you choose the amount of memory you want for
+your function, and are allocated proportional CPU power and other resources. An increase in memory
+size triggers an equivalent increase in CPU available to your function.
+
+##### Things to remember:
+
+- Lambda is suitable for short workloads which should not last for more than 15 minutes.
+- You do not manage any underlying hardware, autoscaling or provisioning.
+- Cost-effective when compared to EC2, since you are only paying for what you use.
+
+---
+
+### ECR
+
+---
+
+### ECS
+
+---
+
+### EKS
+
+---
+
+### Fargate
+
+---
+
+### Elastic Bean Stalk
+
+---
+
+### LightSail
+
+---
 
 ### VPC (Virtual private cloud)
 
@@ -136,7 +196,7 @@ a hub and spoke network to connect multiple vpc together.
 
 - Never store your access key inside ec2 instances, instead create a role with required permissions
   and attach it to the instance.
- 
+
 ---
 
 #### AWS well-architected framework
@@ -144,7 +204,7 @@ a hub and spoke network to connect multiple vpc together.
 | Pillar                        | Definition                                                                                                                                                                                                                                                                                | Design Principle                                                                                                                                                                                                                                                         |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Operational Excellence        | The operational excellence pillar focuses on running and monitoring systems, and continually improving processes and procedures. Key topics include automating changes, responding to events, and defining standards to manage daily operations.                                          | 1. Perform operations as code <br/>2. Make frequent, small, reversible changes <br/>3. Refine operations procedures frequently <br/>4. Anticipate failure 5. Learn from all operational failures                                                                         |
-| Security Pillar               | The security pillar focuses on protecting information and systems. Key topics include confidentiality and integrity of data, managing user permissions, and establishing controls to detect security events.                                                                              | 1. Implement a strong identity foundation 2. Enable traceability <br/>3. Apply security at all layers <br/>4. Automate security best practices <br/>5. Protect data in transit and at rest<br/> 6. Keep people away from data <br/>7. Prepare for security events        |
+| Security Pillar               | The security pillar focuses on protecting information and systems. Key topics include confidentiality and integrity of data, managing user permissions, and establishing controls to detect security events.                                                                              | 1. Implement a strong identity foundation <br/>2. Enable traceability <br/>3. Apply security at all layers <br/>4. Automate security best practices <br/>5. Protect data in transit and at rest<br/> 6. Keep people away from data <br/>7. Prepare for security events   |
 | Reliability Pillar            | The reliability pillar focuses on workloads performing their intended functions and how to recover quickly from failure to meet demands. Key topics include distributed system design, recovery planning, and adapting to changing requirements.                                          | 1. Automatically recover from failure <br/>2. Test recovery procedures <br/>3. Scale horizontally to increase aggregate workload availability <br/>4. Stop guessing capacity <br/>5. Manage change through automation                                                    |
 | Performance Efficiency Pillar | The performance efficiency pillar focuses on structured and streamlined allocation of IT and computing resources. Key topics include selecting resource types and sizes optimized for workload requirements, monitoring performance, and maintaining efficiency as business needs evolve. | 1. Democratize advanced technologies: Make advanced technology implementation easier for your team <br/>2. Go global in minutes <br/>3. Use serverless architectures <br/>4. Experiment more often <br/>5. Consider mechanical sympathy                                  |
 | Cost Optimization Pillar      | The cost optimization pillar focuses on avoiding unnecessary costs. Key topics include understanding spending over time and controlling fund allocation, selecting resources of the right type and quantity, and scaling to meet business needs without overspending.                     | 1. Implement cloud financial management <br/>2. Adopt a consumption model <br/>3. Measure overall efficiency <br/>4. Stop spending money on undifferentiated heavy lifting <br/>5. Analyze and attribute expenditure                                                     |
