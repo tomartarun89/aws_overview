@@ -136,13 +136,22 @@ size triggers an equivalent increase in CPU available to your function.
 
 ### ECS
 
+ECS stands for Elastic Container Service, which is a fully managed container orchestration service provided by Amazon Web Services (AWS). It allows users to easily run and manage Docker containers on a cluster of EC2 instances.
+
 ---
 
 ### EKS
 
+EKS stands for Elastic Kubernetes Service, and it is a fully managed service that makes it easier to run Kubernetes on AWS without the need to manage the underlying infrastructure.
+
+
+
+So ECS is used to run Docker containers, and EKS is used to manage the running containers and the associated infrastructure.
+
 ---
 
 ### Fargate
+Fargate is a serverless compute engine for containers that works with both ECS and EKS, allowing users to run containers without having to manage the underlying infrastructure. It provides an easy way to deploy and manage containerized applications on AWS.
 
 ---
 
