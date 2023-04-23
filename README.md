@@ -184,6 +184,60 @@ a hub and spoke network to connect multiple vpc together.
   on-premise data center connect to the AWS over an actual physical connection provided by an Amazon
   Partner, thus avoid the public internet completely.
 
+---
+
+## IAM
+
+### What is AWS IAM?
+
+AWS IAM (Identity and Access Management) is a web service that helps you securely control access to AWS resources for your users. It enables you to manage users and their level of access to the AWS console and other AWS services.
+
+### Policies and Permissions
+
+You manage access in AWS by creating policies and attaching them to IAM identities (users, groups of users, or roles) or AWS resources. A policy is an object in AWS that, when associated with an identity or resource, defines their permissions. AWS evaluates these policies when an IAM principal (user or role) makes a request. Permissions in the policies determine whether the request is allowed or denied. Most policies are stored in AWS as JSON documents.
+
+### Policy types
+
+1. Identity-based policies Attach managed and inline policies to IAM identities (users, groups to which users belong, or roles). Identity-based policies grant permissions to an identity.
+
+2. Resource-based policies: Attach inline policies to resources. The most common examples of resource-based policies are Amazon S3 bucket policies and IAM role trust policies. Resource-based policies grant permissions to the principal that are specified in the policy. Principals can be in the same account as the resource or in other accounts.
+
+3. Permissions boundaries: Use a managed policy as the permissions boundary for an IAM entity (user or role). That policy defines the maximum permissions that identity-based policies can grant to an entity, but does not grant permissions. Permission boundaries do not define the maximum permissions that a resource-based policy can grant to an entity.
+
+4. Organisations SCPs – Use an AWS Organisations service control policy (SCP) to define the maximum permissions for account members of an organisation or organisational unit (OU). SCPs limit permissions that identity-based policies or resource-based policies grant to entities (users or roles) within the account but do not grant permissions.
+
+5. Access control lists (ACLs): Use ACLs to control which principals in other accounts can access the resource to which the ACL is attached. ACLs are similar to resource-based policies, although they are the only policy type that does not use the JSON policy document structure. ACLs are cross-account permission policies that grant permissions to the specified principal. ACLs cannot grant permissions to entities within the same account.
+
+6. Session policies: Pass advanced session policies when you use the AWS CLI or AWS API to assume a role or a federated user. Session policies limit the permissions that the role's or user's identity-based policies grant to the session. Session policies limit permissions for a created session, but do not grant permissions. For more information, see Session Policies.
+
+### What is the difference between “identities” and “entities” ?
+
+Identities refer to the users or principals who are authenticated to access AWS resources, while entities refer to the AWS resources themselves, such as EC2 instances or S3 buckets.
+
+#### Users
+
+These are the actual users in your organisation, and you can directly assign permission to them.
+
+#### Groups
+
+An IAM user group is a collection of IAM users. User groups let you specify permissions for multiple users, which can make it easier to manage the permissions for those users.
+
+You might wonder what will happen if you create two groups, provide permission for a resource in one group and deny it in another, and add the same user to both groups. In such scenarios, the explicit deny takes precedence over the allow.
+
+#### Roles
+
+An IAM role is an IAM identity that you can create in your account that has specific permissions. An IAM role is similar to an IAM user, in that it is an AWS identity with permission policies that determine what the identity can and cannot do in AWS. However, instead of being uniquely associated with one person, a role is intended to be assumable by anyone who needs it. Also, a role does not have standard long-term credentials such as a password or access keys associated with it. Instead, when you assume a role, it provides you with temporary security credentials for your role session.
+
+### IAM best practises
+
+- Follow the least privilege principle.
+- Only provide the required permissions to the users. 
+- Audit the access using the IAM Credentials Report, CloudTrail, and IAM Access Advisor. 
+- Attach roles to the resources instead of using access keys and tokens. 
+- Use access keys and tokens for programmatic access.
+- Set strong password policies. 
+- Enforce multi-factor authentication **(MFA)** usage.
+
 #### Miscellaneous
 
 - AWS trusted advisor looks for security flaws in the configuration components and performance
