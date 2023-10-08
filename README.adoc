@@ -143,7 +143,7 @@ Fargate is a serverless compute engine for containers that works with both ECS a
 === LightSail
 
 ''''
-=== VPC (Virtual private cloud)
+== VPC (Virtual private cloud)
 
 [.lead]
 A VPC is an isolated portion of the AWS cloud that has resources defined and restricted for use by a customer. It is a region specific service, i.e. it cannot span across more than one region.
@@ -171,18 +171,18 @@ In order to avoid creating multiple vpc peering connection you can use transit g
 
 ''''
 
-=== IAM
+== IAM
 
-==== What is AWS IAM?
+=== What is AWS IAM?
 
 [.lead]
 AWS IAM (Identity and Access Management) is a web service that helps you securely control access to AWS resources for your users. It enables you to manage users and their level of access to the AWS console and other AWS services.
 
-==== Policies and Permissions
+=== Policies and Permissions
 
 You manage access in AWS by creating policies and attaching them to IAM identities (users, groups of users, or roles) or AWS resources. A policy is an object in AWS that, when associated with an identity or resource, defines their permissions. AWS evaluates these policies when an IAM principal (user or role) makes a request. Permissions in the policies determine whether the request is allowed or denied. Most policies are stored in AWS as JSON documents.
 
-==== Policy types
+=== Policy types
 
 . _Identity-based policies_ Attach managed and inline policies to IAM identities (users, groups to which users belong, or roles). Identity-based policies grant permissions to an identity.
 
@@ -200,17 +200,17 @@ You manage access in AWS by creating policies and attaching them to IAM identiti
 
 Identities refer to the users or principals who are authenticated to access AWS resources, while entities refer to the AWS resources themselves, such as EC2 instances or S3 buckets.
 
-==== Users
+=== Users
 
 These are the actual users in your organisation, and you can directly assign permission to them.
 
-==== Groups
+=== Groups
 
 An IAM user group is a collection of IAM users. User groups let you specify permissions for multiple users, which can make it easier to manage the permissions for those users.
 
 You might wonder what will happen if you create two groups, provide permission for a resource in one group and deny it in another, and add the same user to both groups. In such scenarios, the explicit deny takes precedence over the allow.
 
-==== Roles
+=== Roles
 
 An IAM role is an IAM identity that you can create in your account that has specific permissions. An IAM role is similar to an IAM user, in that it is an AWS identity with permission policies that determine what the identity can and cannot do in AWS. However, instead of being uniquely associated with one person, a role is intended to be assumable by anyone who needs it. Also, a role does not have standard long-term credentials such as a password or access keys associated with it. Instead, when you assume a role, it provides you with temporary security credentials for your role session.
 
@@ -236,7 +236,7 @@ and attach it to the instance.
 
 ''''
 
-=== AWS well-architected framework
+== AWS well-architected framework
 
 
 |===
